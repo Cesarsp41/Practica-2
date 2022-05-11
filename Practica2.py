@@ -41,3 +41,12 @@ if resultado == 102:
     division = cv2.divide(imagen1,imagen2) #Variable imagen de division
     cv2.imshow("Division",division)
     cv2.moveWindow("Division",900,200)
+
+#Recuperado de https://theailearner.com/2019/01/01/log-transformation/
+if resultado == 103:
+    suma = cv2.add(imagen1,imagen2) #Variable imagen de suma para aplicar logaritmo
+    logaritmo = (np.log(suma+1)/(np.log(1+np.max(suma))))*255
+    logaritmo = np.array(logaritmo,dtype=np.uint8)
+    cv2.imshow("Logaritmo",logaritmo)
+    cv2.moveWindow("Logaritmo",900,200)
+
