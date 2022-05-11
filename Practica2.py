@@ -16,9 +16,7 @@ cv2.moveWindow("Iron Man",1985,200)
 #Guardar tecla pulsada
 resultado = cv2.waitKey(0)
 
-
-#METODO1 CV2 FUNCIONES
-
+######################################################################################################
 if resultado == 99:
     suma = cv2.add(imagen1,imagen2) #Variable imagen de suma
     cv2.imshow("Suma",suma)
@@ -42,6 +40,7 @@ if resultado == 102:
     cv2.imshow("Division",division)
     cv2.moveWindow("Division",900,200)
 
+
 #Recuperado de https://theailearner.com/2019/01/01/log-transformation/
 if resultado == 103:
     suma = cv2.add(imagen1,imagen2) #Variable imagen de suma para aplicar logaritmo
@@ -50,3 +49,25 @@ if resultado == 103:
     cv2.imshow("Logaritmo",logaritmo)
     cv2.moveWindow("Logaritmo",900,200)
 
+
+if resultado == 104:
+    suma = cv2.add(imagen1,imagen2) #Variable imagen de suma para aplicar raiz
+    raiz = cv2.sqrt(suma)
+    cv2.imshow("Raiz",raiz)
+    cv2.moveWindow("Raiz",900,200)
+
+
+#Derivada https://opencv24-python-tutorials.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_gradients/py_gradients.html
+if resultado == 105:
+    suma = cv2.add(imagen1,imagen2) #Variable imagen de suma para aplicar derivada
+    derivada = cv2.Laplacian(suma,cv2.CV_64F)
+    cv2.imshow("Derivada",derivada)
+    cv2.moveWindow("Derivada",900,200)
+
+
+if resultado == 106:
+    suma = cv2.add(imagen1,imagen2) #Variable imagen de suma para aplicar potencia
+    potencia = cv2.pow(suma,2)
+    cv2.imshow("Potencia",potencia)
+    cv2.moveWindow("Potencia",900,200)
+#######################################################################################################
