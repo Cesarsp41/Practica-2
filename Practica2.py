@@ -48,6 +48,9 @@ if resultado == 99:
     cv2.moveWindow("Division",900,200)
 
 #Logaritmo
+resultado = cv2.waitKey(0)
+if resultado == 99:
+    cv2.destroyWindow("Division")
 
 #Raiz
 
@@ -91,8 +94,6 @@ resultado = cv2.waitKey(0)
 if resultado == 99:
     cv2.destroyWindow("Negacion 1")
     cv2.destroyWindow("Negacion 2")
-    imagen1 = cv2.imread('bat1.jpg',1)
-    imagen2 = cv2.imread('im1.jpg',1)
     T1 = np.float32([[1,0,210],[0,1,20]])
     traslacion1 = cv2.warpAffine(imagen1,T1,(400,400))
     cv2.imshow("Traslacion 1",traslacion1)
@@ -117,10 +118,46 @@ if resultado == 99:
 
 #Rotacion
 resultado = cv2.waitKey(0)
+if resultado == 99:
+    cv2.destroyWindow("Escalado 1")
+    cv2.destroyWindow("Escalado 2")
+    height, width = imagen1.shape[:2]
+    center = (width/2, height/2)
+    rotate_matrix = cv2.getRotationMatrix2D(center=center, angle=45, scale=1)
+    rotada1 = cv2.warpAffine(src=imagen1, M=rotate_matrix, dsize=(width, height))
+    rotada2 = cv2.warpAffine(src=imagen2, M=rotate_matrix, dsize=(width, height))
+    cv2.imshow("Rotada 1",rotada1)
+    cv2.moveWindow("Rotada 1",0,200)
+    cv2.imshow("Rotada 2",rotada2)
+    cv2.moveWindow("Rotada 2",2035,200)
 
-    
+#Traslación a fin
+resultado = cv2.waitKey(0)
+if resultado == 99:
+    cv2.destroyWindow("Rotada 1")
+    cv2.destroyWindow("Rotada 2")
+
+    rowsA,colsA,chA = imagen1.shape
+    p1 = np.float32([[50,300],[400,100],[100,100]])
+    p2 = np.float32([[300,100],[300,50],[80,150]])
+    A1 = cv2.getAffineTransform(p1,p2)
+    Affine1 = cv2.warpAffine(imagen1,A1,(colsA,rowsA))
+
+    rowsB,colsB,chB = imagen2.shape
+    p3 = np.float32([[300,100],[300,50],[80,150]])
+    p4 = np.float32([[50,300],[400,100],[100,100]])
+    A2 = cv2.getAffineTransform(p3,p4)
+    Affine2 = cv2.warpAffine(imagen2,A2,(colsB,rowsB))
+
+    cv2.imshow("Traslacion 1",Affine1)
+    cv2.moveWindow("Traslacion 1",0,200)
+    cv2.imshow("Traslacion 2",Affine2)
+    cv2.moveWindow("Traslacion",1985,200)
 
 
-
-    
+#Transpuesta
+resultado = cv2.waitKey(0)
+if resultado == 99:
+    cv2.destroyWindow("Traslacion 1")
+    cv2.destroyWindow("Traslacion 2")    
 #######################################################################################################
