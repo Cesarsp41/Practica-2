@@ -50,20 +50,52 @@ if resultado == 99:
 #Logaritmo
 resultado = cv2.waitKey(0)
 if resultado == 99:
-    cv2.destroyWindow("Division")
+    cv2.destroyAllWindows()
 
-#Raiz
+    c = 255 / np.log(1 + np.max(imagen1))
+    log_image1 = c * (np.log(imagen1 + 1))
+    log_image1 = np.array(log_image1, dtype = np.uint8)
 
+    d = 255 / np.log(1 + np.max(imagen2))
+    log_image2 = d * (np.log(imagen2 + 1))
+    log_image2 = np.array(log_image2, dtype = np.uint8)
+
+    cv2.imshow("Logaritmo 1",log_image1)
+    cv2.moveWindow("Logaritmo 1",0,200)
+    cv2.imshow("Logaritmo 2",log_image2)
+    cv2.moveWindow("Logaritmo 2",1985,200)
 
 #Derivada
-
+resultado = cv2.waitKey(0)
+if resultado == 99:
+    cv2.destroyAllWindows()
+    derivada1 = cv2.Laplacian(imagen1,cv2.CV_64F)
+    derivada2 = cv2.Laplacian(imagen2,cv2.CV_64F)
+    cv2.imshow("Derivada 1",derivada1)
+    cv2.moveWindow("Derivada 1",0,200)
+    cv2.imshow("Derivada 2",derivada2)
+    cv2.moveWindow("Derivada 2",1985,200)
+    
 
 #Potencia
-
-
+resultado = cv2.waitKey(0)
+if resultado == 99:
+    cv2.destroyAllWindows()
+    potencia1 = cv2.pow(imagen1,2)
+    potencia2 = cv2.pow(imagen2,2)
+    cv2.imshow("Potencia 1",potencia1)
+    cv2.moveWindow("Potencia 1",0,200)
+    cv2.imshow("Potencia 2",potencia2)
+    cv2.moveWindow("Potencia 2",1985,200)
+    
 #Conjuncion
 resultado = cv2.waitKey(0)
 if resultado == 99:
+    cv2.destroyAllWindows()
+    cv2.imshow("Batman",imagen1)
+    cv2.moveWindow("Batman",0,200)
+    cv2.imshow("Iron Man",imagen2)
+    cv2.moveWindow("Iron Man",1985,200)
     conjuncion = cv2.bitwise_and(imagen1,imagen2)
     cv2.imshow("Conjuncion",conjuncion)
     cv2.moveWindow("Conjuncion",900,200)
@@ -152,12 +184,18 @@ if resultado == 99:
     cv2.imshow("Traslacion 1",Affine1)
     cv2.moveWindow("Traslacion 1",0,200)
     cv2.imshow("Traslacion 2",Affine2)
-    cv2.moveWindow("Traslacion",1985,200)
+    cv2.moveWindow("Traslacion 2",1985,200)
 
 
 #Transpuesta
 resultado = cv2.waitKey(0)
 if resultado == 99:
     cv2.destroyWindow("Traslacion 1")
-    cv2.destroyWindow("Traslacion 2")    
+    cv2.destroyWindow("Traslacion 2")
+    transpuesta1 = cv2.transpose(imagen1)
+    transpuesta2 = cv2.transpose(imagen2)
+    cv2.imshow("Transpuesta 1",transpuesta1)
+    cv2.moveWindow("Transpuesta 1",0,400)
+    cv2.imshow("Transpuesta 2",transpuesta2)
+    cv2.moveWindow("Transpuesta 2",1685,400)
 #######################################################################################################
